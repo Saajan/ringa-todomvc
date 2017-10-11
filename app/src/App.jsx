@@ -7,7 +7,10 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 export const TodoAppModel = Model.construct("TodoAppModel", [
-  "todos"
+  {
+    name: "todos",
+    default: []
+  }
 ]);
 
 class TodoAppController extends Controller {
@@ -16,14 +19,12 @@ class TodoAppController extends Controller {
 
     this.addModel(new TodoAppModel());
 
-    this.addListener("addTodo", [
-      this.loadTodos
-    ]);
+    this.addListener("addTodo", [this.loadTodos]);
   }
 
   loadTodos(todo, todoAppModel) {
-    console.log(todo,todoAppModel);
     todoAppModel.todos.push(todo);
+    todoAppModel.notify('todos');
   }
 }
 
@@ -43,8 +44,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <TodoForm/>
-        <TodoList/>
+        <TodoForm />
+        <TodoList />
       </div>
     );
   }
