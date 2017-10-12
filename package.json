@@ -1,7 +1,7 @@
 {
   "name": "ringa-todomvc",
   "version": "0.0.1",
-  "description": "Ringa, react-ringa to create To Do MVC",
+  "description": "Ringa, react-ringa to implement the standard ToDo MVC",
   "scripts": {
     "clean": "rm -rf dist",
     "dev": "`npm bin`/webpack-dev-server --config ./config/webpack.config.dev.js",
@@ -13,12 +13,9 @@
   },
   "keywords": [],
   "authors": [
-    "Joshua Jung <josh@icontrolapp.se>",
+    "Joshua Jung <joshua.p.jung@gmail.com>",
     "Saajan <saajan.sn@gmail.com>"
   ],
-  "peerDependencies": {
-    "react-dom": "15.5.4"
-  },
   "dependencies": {
     "babel-jest": "^19.0.0",
     "babel-polyfill": "^6.0.0",
@@ -27,8 +24,9 @@
     "classnames": "^2.2.5",
     "postcss-loader": "^2.0.6",
     "react": "15.5.4",
-    "react-ringa": "0.0.42",
-    "ringa": "0.0.47"
+    "react-dom": "15.5.4",
+    "react-ringa": "0.1.3",
+    "ringa": "0.1.3"
   },
   "devDependencies": {
     "babel-core": "^6.7.6",

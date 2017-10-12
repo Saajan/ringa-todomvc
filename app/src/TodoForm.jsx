@@ -39,6 +39,6 @@ export default class TodoForm extends React.Component {
   }
 
   clear_onClickHandler() {
-    this.state.TodoAppModel.todos = [];
+    this.state.todoAppModel.todos = [];
   }
 }
