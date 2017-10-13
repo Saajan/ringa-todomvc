@@ -6,6 +6,9 @@ import { attach } from "react-ringa";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
+import uuidv from "uuid/v1";
+import { Wrapper,Top,Bottom } from "./style";
+
 export const TodoAppModel = Model.construct("TodoAppModel", [
   {
     name: "todos",
@@ -23,8 +26,12 @@ class TodoAppController extends Controller {
   }
 
   loadTodos(todo, todoAppModel) {
-    todoAppModel.todos.push(todo);
-    todoAppModel.notify('todos');
+    todoAppModel.todos.push({
+      id: uuidv(),
+      text: todo,
+      completed: false
+    });
+    todoAppModel.notify("todos");
   }
 }
 
@@ -44,8 +51,14 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <TodoForm />
-        <TodoList />
+        <Wrapper>
+          <Top>
+            <TodoForm />
+          </Top>
+          <Bottom>
+            <TodoList />
+          </Bottom>
+        </Wrapper>
       </div>
     );
   }

@@ -3,6 +3,8 @@ import React from "react";
 import { TodoAppModel } from "./App";
 import { depend, dependency } from "react-ringa";
 
+import TodoItem from "./TodoItem";
+
 export default class TodoList extends React.Component {
   //-----------------------------------
   // Constructor
@@ -10,7 +12,7 @@ export default class TodoList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.deleteTodo_onClickHandler = this.deleteTodo_onClickHandler.bind(this);
+    //this.deleteTodo_onClickHandler = this.deleteTodo_onClickHandler.bind(this);
 
     depend(this, dependency(TodoAppModel, ["todos"]));
   }
@@ -20,19 +22,14 @@ export default class TodoList extends React.Component {
   //-----------------------------------
   render() {
     const { todos } = this.state;
-
     return (
-      <div>
-        {todos ? todos.map((todo,index) => (<div onClick={this.deleteTodo_onClickHandler(index)}>{todo}</div>)) : undefined}
-      </div>
+      <ul>
+        {todos
+          ? todos.map(todo => {
+              return <TodoItem key={todo.id} {...todo} />;
+            })
+          : undefined}
+      </ul>
     );
-  }
-
-  deleteTodo_onClickHandler(index) {
-    console.log(this.state.todoAppModel.todos,index);
-
-    //this.state.todoAppModel.todos
-
-    //this.state.todoAppModel.todos = [];
   }
 }

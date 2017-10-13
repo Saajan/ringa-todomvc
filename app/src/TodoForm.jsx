@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import {dispatch} from 'ringa';
-import {depend, dependency} from 'react-ringa';
-import {TodoAppModel} from './App';
+import { dispatch } from "ringa";
+import { depend, dependency } from "react-ringa";
+import { TodoAppModel } from "./App";
+import { Topcontainer, Button, Label ,Buttoncontainer } from "./style";
 
 export default class TodoForm extends React.Component {
   //-----------------------------------
@@ -21,21 +22,31 @@ export default class TodoForm extends React.Component {
   // Lifecycle
   //-----------------------------------
   render() {
-    return <div ref="root">
-        <label>To do</label>
-        <input ref="todo" defaultValue={"Hello World"} />
-        <button onClick={this.addTodo_onClickHandler}>Add To Do</button>
-        <button onClick={this.clear_onClickHandler}>Clear</button>
-      </div>;
+    return (
+      <div ref="root">
+        <Topcontainer>
+          <Label>To do</Label>
+          <input ref="todo" type="text" defaultValue={"Hello World"} />
+          <Buttoncontainer>
+            <Button onClick={this.addTodo_onClickHandler}>Add To Do</Button>
+            <Button onClick={this.clear_onClickHandler}>Clear</Button>
+          </Buttoncontainer>
+        </Topcontainer>
+      </div>
+    );
   }
 
   //-----------------------------------
   // Events
   //-----------------------------------
   addTodo_onClickHandler() {
-    dispatch('addTodo', {
-      todo: this.refs.todo.value
-    }, this.refs.root);
+    dispatch(
+      "addTodo",
+      {
+        todo: this.refs.todo.value
+      },
+      this.refs.root
+    );
   }
 
   clear_onClickHandler() {
