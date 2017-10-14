@@ -47,6 +47,7 @@ export default class TodoForm extends React.Component {
       },
       this.refs.root
     );
+    this.refs.todo.value = "";
   }
 
   clear_onClickHandler() {
