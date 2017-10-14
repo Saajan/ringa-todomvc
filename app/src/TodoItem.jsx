@@ -9,7 +9,7 @@ export default class TodoItem extends React.Component {
     return (
       <li>
         <input type="checkbox" value={completed} />
-        {text}
+        {completed ? <strike>{text}</strike> : <span>{text}</span>}
       </li>
     );
   }

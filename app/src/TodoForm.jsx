@@ -3,7 +3,7 @@ import React from "react";
 import { dispatch } from "ringa";
 import { depend, dependency } from "react-ringa";
 import { TodoAppModel } from "./App";
-import { Topcontainer, Button, Label ,Buttoncontainer } from "./style";
+import { Topcontainer, Button, Label, Buttoncontainer } from "./style";
 
 export default class TodoForm extends React.Component {
   //-----------------------------------
@@ -40,14 +40,16 @@ export default class TodoForm extends React.Component {
   // Events
   //-----------------------------------
   addTodo_onClickHandler() {
-    dispatch(
-      "addTodo",
-      {
-        todo: this.refs.todo.value
-      },
-      this.refs.root
-    );
-    this.refs.todo.value = "";
+    if (this.refs.todo.value !== "") {
+      dispatch(
+        "addTodo",
+        {
+          todo: this.refs.todo.value
+        },
+        this.refs.root
+      );
+      this.refs.todo.value = "";
+    }
   }
 
   clear_onClickHandler() {
