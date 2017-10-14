@@ -29,6 +29,10 @@ export const Bottom = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  align-items: center;
+  width:50%;
+  overflow-y:auto;
+  margin:20px;
 `;
 
 export const Topcontainer = styled.div`
